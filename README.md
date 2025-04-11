@@ -1,38 +1,61 @@
-# Slint Rust Template
+# UserActivityTrainer
 
-A template for a Rust application that's using [Slint](https://slint.rs/) for the user interface.
+An application built with Rust and Slint to capture user mouse movements and keystrokes, intended for training a machine learning model to perform specific tasks.
 
 ## About
 
-This template helps you get started developing a Rust application with Slint as toolkit
-for the user interface. It demonstrates the integration between the `.slint` UI markup and
-Rust code, how to react to callbacks, get and set properties, and use basic widgets.
+This project uses the `device_query` crate to listen for global mouse and keyboard events and records this activity. The collected data can then be used to train a machine learning model. The user interface is built using the [Slint](https://slint.rs/) toolkit.
+
+**Note:** The specific task the ML model is trained for is currently under development/not specified.
+
+## Features
+
+- Captures mouse movement coordinates.
+- Captures keyboard key presses.
+- Provides a basic UI using Slint.
+- (Potentially) Includes functionality to save/load captured data.
+- (Potentially) Includes ML model training and inference logic.
 
 ## Usage
 
-1. Install Rust by following its [getting-started guide](https://www.rust-lang.org/learn/get-started).
-   Once this is done, you should have the `rustc` compiler and the `cargo` build system installed in your `PATH`.
-2. Download and extract the [ZIP archive of this repository](https://github.com/slint-ui/slint-rust-template/archive/refs/heads/main.zip).
-3. Rename the extracted directory and change into it:
-    ```
-    mv slint-rust-template-main my-project
-    cd my-project    
-    ```
-4. Build with `cargo`:
-    ```
-    cargo build
-    ```
-5. Run the application binary:
-    ```
-    cargo run
-    ```
+### Prerequisites
 
-We recommend using an IDE for development, along with our [LSP-based IDE integration for `.slint` files](https://github.com/slint-ui/slint/blob/master/tools/lsp/README.md). You can also load this project directly in [Visual Studio Code](https://code.visualstudio.com) and install our [Slint extension](https://marketplace.visualstudio.com/items?itemName=Slint.slint).
+1.  **Install Rust:** Follow the [getting-started guide](https://www.rust-lang.org/learn/get-started). You'll need `rustc` and `cargo`.
+2.  **Permissions for Input Monitoring:** This application captures global keyboard and mouse input using the `device_query` crate. Depending on your operating system, you may need to grant special permissions:
+    - **macOS:** You might need to grant Accessibility access.
+    - **Linux (X11):** Usually works out of the box.
+    - **Linux (Wayland):** Input monitoring might be restricted.
+    - **Windows:** May require running the application as an administrator.
+      Consult the `device_query` documentation or your OS guidelines for specific requirements.
+
+### Building and Running
+
+1.  Clone or download this repository.
+2.  Navigate to the project directory:
+    ```bash
+    cd UserActivityTrainer # Or your chosen project directory name
+    ```
+3.  Build the application:
+    ```bash
+    cargo build --release
+    ```
+4.  Run the application:
+    ```bash
+    cargo run --release
+    ```
+    Alternatively, run the compiled binary directly from `./target/release/`.
+
+## Development
+
+We recommend using an IDE with Rust support (like VS Code with the rust-analyzer extension). For the Slint UI parts (`.slint` files), consider using the [Slint LSP integration](https://github.com/slint-ui/slint/blob/master/tools/lsp/README.md) or the [Slint VS Code extension](https://marketplace.visualstudio.com/items?itemName=Slint.slint).
 
 ## Next Steps
 
-We hope that this template helps you get started, and that you enjoy exploring making user interfaces with Slint. To learn more
-about the Slint APIs and the `.slint` markup language, check out our [online documentation](https://slint.dev/docs).
+- Define the specific task for the ML model.
+- Implement data saving/loading mechanisms.
+- Integrate the ML model training and usage logic.
+- Refine the Slint UI.
 
-Don't forget to edit this readme to replace it by yours, and edit the `name =` field in `Cargo.toml` to match the name of your
-project.
+## License
+
+(Please specify your chosen license here, e.g., This project is licensed under the MIT License - see the LICENSE file for details.)
