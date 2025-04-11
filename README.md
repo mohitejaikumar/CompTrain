@@ -8,7 +8,7 @@ This project uses the `device_query` crate to listen for global mouse and keyboa
 
 **Note:** The specific task the ML model is trained for is currently under development/not specified.
 
-![image](https://github.com/user-attachments/assets/ce155969-c3ee-440d-9bd3-b9376ca0b7c3)
+
 
 
 ## Features
