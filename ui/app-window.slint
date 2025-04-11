@@ -1,17 +1,59 @@
-import { Button, VerticalBox } from "std-widgets.slint";
+import { LineEdit, VerticalBox, Button } from "std-widgets.slint";
 
 export component AppWindow inherits Window {
-    in-out property <int> counter: 42;
-    callback request-increase-value();
-    VerticalBox {
-        Text {
-            text: "Counter: \{root.counter}";
+    width: 500px;
+    height: 300px;
+    background: #393539;
+    in-out property <string> task_name:"";
+    in-out property <bool> is_task_created: false;
+    in-out property <string> timer: "";
+    callback request-create-task(task_name: string);
+    callback request-stop-task();
+    GridLayout {
+        spacing: 20px;
+        padding: 100px;
+        padding-top: 50px;
+        Row {
+            Text {
+                text: "Create task";
+                horizontal-alignment: center;
+                font-size: 24px;
+                font-weight: 900;
+            }
         }
 
-        Button {
-            text: "Increase value";
-            clicked => {
-                root.request-increase-value();
+        VerticalBox {
+            taskName := LineEdit {
+                horizontal-alignment: center;
+                placeholder-text: "Enter text here";
+                height: 50px;
+            }
+        }
+
+        Row {
+            Button {
+                text: "Submit";
+                enabled: !is_task_created;
+                clicked => {
+                    root.request-create-task(taskName.text);
+                }
+            }
+        }
+
+        Row {
+            Text {
+                text: timer;
+                horizontal-alignment: center;
+                font-size: 24px;
+                font-weight: 900;
+            }
+
+            Button {
+                text: "Stop";
+                enabled: is_task_created;
+                clicked => {
+                    root.request-stop-task();
+                }
             }
         }
     }
