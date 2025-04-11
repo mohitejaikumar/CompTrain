@@ -2,6 +2,8 @@
 
 An application built with Rust and Slint to capture user mouse movements and keystrokes, intended for training a machine learning model to perform specific tasks.
 
+[Data Format](https://raw.githubusercontent.com/mohitejaikumar/CompTrain/refs/heads/main/closing_vs_code.json)
+
 ## About
 
 This project uses the `device_query` crate to listen for global mouse and keyboard events and records this activity. The collected data can then be used to train a machine learning model. The user interface is built using the [Slint](https://slint.rs/) toolkit.
