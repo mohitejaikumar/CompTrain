@@ -3,7 +3,7 @@
 version = 4
 
 [[package]]
-name = "UserActivityTrainer"
+name = "CompTrain"
 version = "0.1.0"
 dependencies = [
  "chrono",

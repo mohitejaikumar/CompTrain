@@ -1,7 +1,9 @@
 [package]
+authors = ["Jaikumar Mohite <mohitejaikumar@gmail.com>"]
+build = "build.rs"
 description = "An application to capture user mouse movements and keystrokes for training a machine learning model."
 edition = "2021"
-name = "UserActivityTrainer"
+name = "CompTrain"
 version = "0.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -12,5 +14,11 @@ device_query = "3.0.1"
 serde = {version = "1.0.212", features = ["derive"]}
 serde_json = "1.0.100"
 slint = "1.8.0"
+
 [build-dependencies]
 slint-build = "1.8.0"
+
+[package.metadata.bundle]
+icon = ["resources/icon/iron_man_1.jpg"]
+identifier = "io.github.mohitejaikumar.CompTrain"
+name = "CompTrain"
